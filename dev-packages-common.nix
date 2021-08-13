@@ -11,6 +11,7 @@ in {
     wget
     nix-prefetch-scripts
     vagrant
+    python39
     oh-my-zsh
     htop
     sshfs
