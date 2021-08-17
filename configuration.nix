@@ -11,9 +11,9 @@
       # Common networking configuration
       ./common-networking.nix
       # Common packages
-      ./common-packages.nix
+      ./packages-common.nix
       # Dev packages
-      ./dev-packages-common.nix
+      ./packages-dev-common.nix
       # Add users to system
       ./users.nix
       # Desktop configuration
@@ -62,6 +62,16 @@
     # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+
+  # Nix otimiser configuration
+  nix = {
+    autoOptimiseStore = true;
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 30d";
+    };
+  };
 
   # Enable the Plasma 5 Desktop Environment.
   services.xserver.displayManager.sddm.enable = true;
